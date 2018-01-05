@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {Row, Col} from "antd";
 
 export default class MobileList extends React.Component {
@@ -46,11 +46,7 @@ export default class MobileList extends React.Component {
             <div>
                 <Row>
                     <Col span={24}>
-                        <Router>
-                            <Switch>
-                                {newsList}
-                            </Switch>
-                        </Router>
+                      {newsList}
                     </Col>
                 </Row>
             </div>
