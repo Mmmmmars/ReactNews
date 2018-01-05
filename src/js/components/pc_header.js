@@ -11,7 +11,7 @@ import {
     CheckBox,
     Modal
 } from 'antd';
-import Link from 'react-router-dom/Link';
+import {Link} from 'react-router-dom';
 const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
@@ -116,12 +116,7 @@ class PCHeader extends React.Component {
                         </a>
                     </Col>
                     <Col span={16}>
-                        <Menu
-                            mode="horizontal"
-                            onClick={this
-                            .handleClick
-                            .bind(this)}
-                            selectedKeys={[this.state.current]}>
+                        <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
                             <Menu.Item key="top"><Icon type="appstore"/>头条</Menu.Item>
                             <Menu.Item key="shehui"><Icon type="appstore"/>社会</Menu.Item>
                             <Menu.Item key="guonei"><Icon type="appstore"/>国内</Menu.Item>
@@ -133,25 +128,10 @@ class PCHeader extends React.Component {
                             {userShow}
                         </Menu>
 
-                        <Modal
-                            title="用户中心"
-                            wrapClassName="vertical-center-modal"
-                            visible={this.state.modalVisible}
-                            onCancel={() => this.setModalVisible(false)}
-                            onOk={() => this.setModalVisible(false)}
-                            okText="关闭">
-                            <Tabs
-                                type="card"
-                                onChange={this
-                                .callback
-                                .bind(this)}>
-
+                        <Modal title="用户中心" wrapClassName="vertical-center-modal" visible={this.state.modalVisible} onCancel={() => this.setModalVisible(false)} onOk={() => this.setModalVisible(false)} okText="关闭">
+                            <Tabs type="card" onChange={this.callback.bind(this)}>
                                 <TabPane tab="登录" key="1">
-                                    <Form
-                                        layout="horizontal"
-                                        onSubmit={this
-                                        .handleSubmit
-                                        .bind(this)}>
+                                    <Form layout="horizontal" onSubmit={this.handleSubmit.bind(this)}>
                                         <FormItem label="账户">
                                             {getFieldDecorator('userName')(<Input placeholder="请输入您的账号"/>)}
                                         </FormItem>
@@ -162,11 +142,7 @@ class PCHeader extends React.Component {
                                     </Form>
                                 </TabPane>
                                 <TabPane tab="注册" key="2">
-                                    <Form
-                                        layout="horizontal"
-                                        onSubmit={this
-                                        .handleSubmit
-                                        .bind(this)}>
+                                    <Form layout="horizontal" onSubmit={this.handleSubmit.bind(this)}>
                                         <FormItem label="账户">
                                             {getFieldDecorator('r_userName')(<Input placeholder="请输入您的账号"/>)}
                                         </FormItem>
@@ -181,7 +157,6 @@ class PCHeader extends React.Component {
                                 </TabPane>
                             </Tabs>
                         </Modal>
-
                     </Col>
                     <Col span={2}></Col>
                 </Row>

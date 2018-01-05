@@ -6,10 +6,10 @@ import MobileIndex from './components/mobile_index';
 import MobileNewsDetails from './components/mobile_news_details';
 import 'antd/dist/antd.css';
 import MediaQuery from 'react-responsive';
-import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 export default class Root extends React.Component {
-	render() {
+render() {
 		return (
 			<div>
 				<MediaQuery query='(min-device-width: 1224px)'>
@@ -21,7 +21,7 @@ export default class Root extends React.Component {
 					</Router>
 				</MediaQuery>
 				<MediaQuery query='(max-device-width: 1224px)'>
-				<Router>
+					<Router>
 						<Switch>
 							<Route exact path="/" component={MobileIndex}></Route>
 							<Route path="/details/:uniquekey" component={MobileNewsDetails}></Route>
@@ -33,5 +33,4 @@ export default class Root extends React.Component {
 	};
 }
 
-ReactDOM.render(
-  <Root/>, document.getElementById('mainContainer'));
+ReactDOM.render(<Root/>, document.getElementById('mainContainer'));
