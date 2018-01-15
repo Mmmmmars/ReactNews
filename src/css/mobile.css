@@ -1,7 +1,11 @@
 html{
   font-size: 50px;
 }
-
+.tloader{
+  height: 500px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
 #mobileheader{
   flex: 1;
   background: #f6f6f6;

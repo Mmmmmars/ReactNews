@@ -27,7 +27,7 @@ export default class MobileIndex extends React.Component {
                                 <div><img src="./src/images/carousel_4.jpg"/></div>
                             </Carousel>
                         </div>
-                        <MobileList count={20} type="top"/>
+                        <MobileList count={5} type="top"/>
                     </TabPane>
                     <TabPane tab="社会" key="2">
                         <MobileList count={20} type="shehui"/>

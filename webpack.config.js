@@ -4,10 +4,7 @@ var path = require('path');
 
 module.exports = {
   context: path.join(__dirname),
-  devtool: 'source-map',
-  devServer: {
-    historyApiFallback: true
-  },
+  devtool: debug ? "inline-sourcemap" : null,
   entry: "./src/js/root.js",
   module: {
     loaders: [
@@ -21,7 +18,11 @@ module.exports = {
         }
       },
       //下面是使用 ant-design 的配置文件
-      { test: /\.css$/, loader: 'style-loader!css-loader' }
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      {
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader"
+      }
     ]
   },
   output: {
