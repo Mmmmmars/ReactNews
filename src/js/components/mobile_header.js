@@ -11,6 +11,7 @@ import {
     CheckBox,
     Modal
 } from 'antd';
+import { Link } from "react-router-dom";
 const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
@@ -76,7 +77,7 @@ class MobileHeader extends React.Component {
     render() {
         const {getFieldDecorator} = this.props.form;
         const userShow = this.state.hasLogined
-            ? <Icon type="inbox"/>
+            ? <Link to={`/usercenter`}><Icon type="inbox"/></Link>
             : <Icon
                 type="setting"
                 onClick={this

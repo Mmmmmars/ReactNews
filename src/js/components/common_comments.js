@@ -5,7 +5,8 @@ import {
     Button,
     Row,
     Col,
-    Card
+    Card,
+    notification
 } from 'antd';
 const FormItem = Form.Item;
 
@@ -27,7 +28,7 @@ class CommonComments extends React.Component {
             })
     };
     handleSubmit() {
-        e.preventDefault();
+        event.preventDefault();
         var myFetchOptions = {
             method: 'GET'
         };
@@ -35,13 +36,22 @@ class CommonComments extends React.Component {
             .props
             .form
             .getFieldsValue();
-            return;
         fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=comment&userid=" + localStorage.userid + "&uniquekey=" + this.props.uniquekey + "&commnet=" + formData.remark, myFetchOptions)
             .then(response => response.json())
             .then(json => {
-               
                 this.componentDidMount();
             })
+    }
+    addUserCollection() {
+        var myFetchOptions = {
+            methon: 'GET'
+        };
+        fetch('http://newsapi.gugujiankong.com/Handler.ashx?action=uc&userid=' + localStorage.userid + '&uniquekey=' + this.props.uniquekey, myFetchOptions)
+            .then(response => response.json())
+            .then(json =>{
+                //收藏成功后进行全局提醒
+                notification['success']({message:'ReactNews提醒',description:'收藏文章成功!'});
+            });
     }
     render() {
         const {getFieldDecorator} = this.props.form;
@@ -51,7 +61,7 @@ class CommonComments extends React.Component {
                 <Card
                     key={index}
                     title={comment.UserName}
-                    extra={<a href = "#"> 发布于 {comment.datetime}</a>}>
+                    extra={<a href="#" > 发布于 {comment.datetime} </a>}>
                     <p>{comment.Comments}</p>
                 </Card>
             ))
@@ -70,6 +80,8 @@ class CommonComments extends React.Component {
                                 {getFieldDecorator('remark')(<Input type="textarea" placeholder="请填写评论"/>)}
                             </FormItem>
                             <Button type="primary" htmlType="submit">提交评论</Button>
+                            &nbsp;&nbsp;&nbsp;
+                            <Button type="primary" htmlType="button" onClick={this.addUserCollection.bind(this)}>收藏</Button>
                         </Form>
                         {commentList}
                     </Col>

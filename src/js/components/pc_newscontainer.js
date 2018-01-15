@@ -4,6 +4,7 @@ import {Tabs, Carousel} from "antd";
 const TabPane = Tabs.TabPane;
 import PCNewsBlock from "./pc_news_block";
 import PCNewsImageBlock from "./pc_news_image_block";
+import PCProduct from "./pc_products";
 
 export default class PCNewsContainer extends React.Component {
     render() {
@@ -41,6 +42,11 @@ export default class PCNewsContainer extends React.Component {
                             </TabPane>
                             <TabPane tab="国际新闻" key="2">
                                 <PCNewsBlock count={21} type="guoji" width="100%" bordered="false"/>
+                            </TabPane>
+                        </Tabs>
+                        <Tabs className="tabs_product">
+                            <TabPane tab="腾讯产品" key="1">
+                                <PCProduct/>
                             </TabPane>
                         </Tabs>
                         <div>
